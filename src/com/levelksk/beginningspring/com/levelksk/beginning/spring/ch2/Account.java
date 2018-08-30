@@ -1,4 +1,4 @@
-package com.levelksk.beginningspring;
+package com.levelksk.beginningspring.com.levelksk.beginning.spring.ch2;
 
 import java.util.Date;
 
