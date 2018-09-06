@@ -1,10 +1,13 @@
-package com.levelksk.beginningspring.com.levelksk.beginning.spring.ch2;
+package com.levelksk.beginning.spring.ch2;
+
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Repository //会被作为持久层操作（数据库）的bean来使用
 public class AccountDaoInMemoryImpl implements AccountDao {
 
     private Map<Long, Account> accountsMap = new HashMap<>();
@@ -68,9 +71,14 @@ public class AccountDaoInMemoryImpl implements AccountDao {
         return accounts;
     }
 
-//    @Override
-//    public List<Account> find(boolean locked) {
-//
-//    }
+    @Override
+    public List<Account> find(boolean locked) {
+        List<Account> accounts = new ArrayList<>();
+        for(Long id : accountsMap.keySet()) {
+            if (accountsMap.get(id).isLocked() == locked)
+                accounts.add(accountsMap.get(id));
+        }
+        return accounts;
+    }
 
 }

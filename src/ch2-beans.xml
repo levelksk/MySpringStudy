@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <bean id="accountService" class="com.levelksk.beginning.spring.ch2.AccountServiceImpl">
+        <!--构造函数注入-->
+        <constructor-arg ref="accountDao"/>
+    </bean>
+
+    <bean id="accountDao" class="com.levelksk.beginning.spring.ch2.AccountDaoInMemoryImpl">
+
+    </bean>
+    <!--<bean id="account1" class="com.levelksk.beginning.spring.ch2.Account">-->
+        <!--<property name="id" value="1"/>-->
+        <!--<property name="ownerName" value="John"/>-->
+        <!--<property name="balance" value="10.0"/>-->
+        <!--<property name="locked" value="true"/>-->
+    <!--</bean>-->
+    <!--<bean id="account2" class="com.levelksk.beginning.spring.ch2.Account">-->
+        <!--<property name="id" value="1"/>-->
+        <!--<property name="ownerName" value="Mary"/>-->
+        <!--<property name="balance" value="10.0"/>-->
+        <!--<property name="locked" value="true"/>-->
+    <!--</bean>-->
+    <!--基于java的注解优先考虑使用-->
+    <!--<context:component-scan base-package="com.levelksk.beginning.spring.ch2"/>-->
+</beans>

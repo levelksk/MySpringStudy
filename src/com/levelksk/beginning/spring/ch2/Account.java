@@ -1,4 +1,6 @@
-package com.levelksk.beginningspring.com.levelksk.beginning.spring.ch2;
+package com.levelksk.beginning.spring.ch2;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 
@@ -7,6 +9,7 @@ public class Account {
     private String ownerName;
     private double balance;
     private Date accessTime;
+    private boolean locked;
 
     public Date getAccessTime() {
         return accessTime;
@@ -38,5 +41,13 @@ public class Account {
 
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
+    }
+
+    public boolean isLocked() {
+        return locked;
+    }
+
+    public void setLocked(boolean locked) {
+        this.locked = locked;
     }
 }
