@@ -10,4 +10,68 @@
         <property name="age" value="28"></property>
     </bean>
 
+    <!-- 可以通过index，type，name来确定参数的输入位置 -->
+    <bean id="car1" class="com.levelksk.spring4.beans.Car">
+        <!-- 构造器注入 -->
+        <constructor-arg value="奥迪" index="0"></constructor-arg>
+        <constructor-arg value="杭州" index="1"></constructor-arg>
+        <constructor-arg value="300000" index="2"></constructor-arg>
+    </bean>
+
+    <bean id="car2" class="com.levelksk.spring4.beans.Car">
+        <constructor-arg value="宝马"></constructor-arg>
+        <constructor-arg value="杭州"></constructor-arg>
+        <constructor-arg value="200" name="maxSpeed"></constructor-arg>
+    </bean>
+
+    <!-- 子节点值配置 -->
+    <bean id="car3" class="com.levelksk.spring4.beans.Car">
+        <constructor-arg value="奔驰"></constructor-arg>
+        <!-- 特殊字符处理方法 -->
+        <constructor-arg>
+            <value><![CDATA[<杭州>]]></value>
+        </constructor-arg>
+        <constructor-arg name="maxSpeed">
+            <value>300</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="person1" class="com.levelksk.spring4.beans.Person">
+        <property name="age" value="28"></property>
+        <property name="car" ref="car1"></property>
+        <property name="name" value="许凌峰"></property>
+    </bean>
+
+    <bean id="person2" class="com.levelksk.spring4.beans.Person">
+        <property name="age" value="28"></property>
+        <property name="car">
+            <ref bean="car2"></ref>
+        </property>
+        <property name="name" value="胡汝娉"></property>
+    </bean>
+
+    <bean id="person3" class="com.levelksk.spring4.beans.Person">
+        <constructor-arg value="许筱湉"></constructor-arg>
+        <constructor-arg value="2"></constructor-arg>
+        <constructor-arg>
+            <ref bean="car3"></ref>
+        </constructor-arg>
+        <!-- 为级联属性赋值 -->
+        <property name="car.price">
+            <value>500000</value>
+        </property>
+    </bean>
+
+    <bean id="person4" class="com.levelksk.spring4.beans.Person">
+        <constructor-arg value="淘淘"></constructor-arg>
+        <constructor-arg value="7"></constructor-arg>
+        <constructor-arg>
+            <bean class="com.levelksk.spring4.beans.Car">
+                <constructor-arg value="宝马"></constructor-arg>
+                <constructor-arg value="杭州"></constructor-arg>
+                <constructor-arg value="400" name="maxSpeed"></constructor-arg>
+            </bean>
+        </constructor-arg>
+    </bean>
+
 </beans>
